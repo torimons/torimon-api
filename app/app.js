@@ -1,14 +1,14 @@
 // ライブラリ読み込み
-var express    = require('express');
-var app        = express();
+let express    = require('express');
+let app        = express();
 
 //body-parserの設定
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var port = process.env.PORT || 3000; // port番号を指定
+let port = process.env.PORT || 3000; // port番号を指定
 
-var router = require('./route/v1/');
+let router = require('./route/v1/');
 app.use('/api/v1/', router);
 
 //サーバ起動

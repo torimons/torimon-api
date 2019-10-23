@@ -4,8 +4,9 @@ let router = express.Router();
 
 // routerにルーティングの動作を書いてく
 router.get('/', function(req, res){
+    res.status(200);
     res.json({
-        message: "Hello,world"
+        message: "Hello, world!"
     });
 });
 

@@ -4,6 +4,7 @@ let MapModel = require('../../models/mapModel.js')
 
 // GET  http://localhost:3000/api/v1/map
 router.get('/', function (req, res) {
+    res.status(200);
     MapModel
         .find()
         .then(function (maps){
@@ -46,9 +47,11 @@ router.post('/', function (req, res){
     Map.save(function(err) {
         if (err){
             // エラーがあった場合エラーメッセージを返す
+            res.status(409);
             res.send(err);
         } else {
             // エラーがなければ「Success!!」
+            res.status(201);
             res.json({ message: 'Success!!' });
         }
     });

@@ -5,12 +5,16 @@ let MapModel = require('../../models/mapModel.js')
 // GET  http://localhost:3000/api/v1/map
 router.get('/', function (req, res) {
     res.status(200);
-    MapModel
-        .find()
-        .then(function (maps){
-            res.json(maps);
-        });
+    res = getAllMaps(res);
+    console.log('finish proc')
 });
+
+getAllMaps = function (res){
+    MapModel.find().then(function (maps){
+        res.json(maps);
+    })
+    return res
+}
 
 // DBにテストデータを登録する
 // POST http://localhost:3000/api/v1/map
@@ -36,11 +40,11 @@ router.post('/', function (req, res){
     let Map = new MapModel();
 
     // テストデータを詰め込む
-    Map.name = example.name;
+    Map.name   = example.name;
     Map.bounds = example.bounds;
-    Map.spots =  example.spots;
-    Map.nodes =  example.nodes;
-    Map.edges =  example.edges;
+    Map.spots  = example.spots;
+    Map.nodes  = example.nodes;
+    Map.edges  = example.edges;
     Map.parent_spot_id =  example.parent_spot_id;
 
     // 保存処理

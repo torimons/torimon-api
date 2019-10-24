@@ -4,7 +4,7 @@
   "description": "api server",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,13 @@
   "dependencies": {
     "expect": "^24.9.0",
     "express": "^4.17.1",
+    "jest": "^24.9.0",
     "mocha": "^6.2.2",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.5",
     "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

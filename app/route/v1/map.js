@@ -10,9 +10,11 @@ router.get('/', function (req, res) {
 });
 
 getAllMaps = function (res) {
-    MapModel.find().then(function (maps) {
-        res.json(maps);
-    })
+    MapModel
+        .find()
+        .then(function (maps) {
+            res.json(maps);
+        })
     return res;
 }
 
@@ -24,16 +26,17 @@ router.get('/:id', function (req, res) {
 })
 
 getMapById = function (mapId, res) {
-    MapModel.findById(mapId, function (err, map) {
-        try {
-            // 指定したマップが見つからなくてもステータス200を返す
-            res.status(200);
-            res.json(map);
-        }
-        catch (err) { // id not found
-            res.send(err);
-        }
-    });
+    MapModel
+        .findById(mapId, function (err, map) {
+            try {
+                // 指定したマップが見つからなくてもステータス200を返す
+                res.status(200);
+                res.json(map);
+            }
+            catch (err) { // id not found
+                res.send(err);
+            }
+        });
     return res;
 }
 

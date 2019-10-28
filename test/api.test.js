@@ -10,12 +10,15 @@ describe('apiのテスト', () => {
     describe('GET /api/v1/map/', () => {
         exampleJson = require('./test-examples/example.js');
         // getAllMapsのモック 
-        getAllMaps = jest.fn(() => {
-            return exampleJson.allMaps;
-        })
+        getAllMaps = jest
+            .fn(() => {
+                return exampleJson.allMaps;
+            })
 
         test('マップ一覧とstatus200が帰ってくるはず', (done) => {
-            request(app).get('/api/v1/map/').expect(200)
+            request(app)
+                .get('/api/v1/map/')
+                .expect(200)
                 .expect((res) => {
                     expect(res.body).toMatchObject(exampleJson.allMaps);
                 });
@@ -27,7 +30,8 @@ describe('apiのテスト', () => {
         exampleJson = require('./test-examples/example.js');
         // getAllMapsのモック 
         // モック
-        getAllMapsById = jest.fn(() => { })
+        getAllMapsById = jest
+            .fn(() => { })
             .mockImplementationOnce(() => {
                 // 1回目の呼び出しで使用される
                 return {}
@@ -38,7 +42,8 @@ describe('apiのテスト', () => {
             })
 
         test('指定したidのマップがない場合', (done) => {
-            request(app).get('/api/v1/map/id_that_does_not_exist')
+            request(app)
+                .get('/api/v1/map/id_that_does_not_exist')
                 .expect(res => {
                     expect(res.body).toMatchObject({});
                 });
@@ -46,8 +51,10 @@ describe('apiのテスト', () => {
         })
 
         test('指定したidのマップがある場合', (done) => {
-            request(app).get('/api/v1/map/5dad7ccf319357df1d9305a9')
-                .expect(200).expect((res) => {
+            request(app)
+                .get('/api/v1/map/5dad7ccf319357df1d9305a9')
+                .expect(200)
+                .expect((res) => {
                     expect(res.body).toMatchObject(exampleJson.singleMap)
                 });
             done();

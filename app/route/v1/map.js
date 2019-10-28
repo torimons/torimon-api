@@ -7,7 +7,6 @@ let MapModel = require('../../models/mapModel.js')
 router.get('/', function (req, res) {
     res.status(200);
     res = getAllMaps(res);
-    console.log('finish proc')
 });
 
 getAllMaps = function (res) {
@@ -21,12 +20,19 @@ getAllMaps = function (res) {
 // マップ(id指定)の情報を取得
 router.get('/:id', function (req, res) {
     let mapId = req.params.id;
-    res = getMapById(mapId);
+    res = getMapById(mapId, res);
 })
 
 getMapById = function (mapId, res) {
-    MapModel.find(mapId, function (err, map) {
-        res.json(map);
+    MapModel.findById(mapId, function (err, map) {
+        try {
+            // 指定したマップが見つからなくてもステータス200を返す
+            res.status(200);
+            res.json(map);
+        }
+        catch (err) { // id not found
+            res.send(err);
+        }
     });
     return res;
 }

@@ -1,44 +1,24 @@
 let express = require('express');
 let router = express.Router();
-let MapModel = require('../../models/mapModel.js')
+let MapModel = require('../../../models/mapModel.js')
 
 // GET  http://localhost:3000/api/v1/map
 // マップ一覧を取得
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
+    console.log('in get/')
     res.status(200);
     res = getAllMaps(res);
 });
 
-getAllMaps = function (res) {
+let getAllMaps = (res) => {
     MapModel
         .find()
-        .then(function (maps) {
+        .then((maps) => {
             res.json(maps);
         })
     return res;
 }
 
-// GET http://localhost:3000/api/v1/map/:id
-// マップ(id指定)の情報を取得
-router.get('/:id', function (req, res) {
-    let mapId = req.params.id;
-    res = getMapById(mapId, res);
-})
-
-getMapById = function (mapId, res) {
-    MapModel
-        .findById(mapId, function (err, map) {
-            try {
-                // 指定したマップが見つからなくてもステータス200を返す
-                res.status(200);
-                res.json(map);
-            }
-            catch (err) { // id not found
-                res.send(err);
-            }
-        });
-    return res;
-}
 
 // DBにテストデータを登録する
 // POST http://localhost:3000/api/v1/map
@@ -85,5 +65,4 @@ router.post('/', function (req, res) {
     });
 });
 
-//routerをモジュールとして扱う準備
-module.exports = router;
+module.exports = router

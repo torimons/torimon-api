@@ -1,6 +1,6 @@
 // ライブラリ読み込み
-let express    = require('express');
-let app        = express();
+let express = require('express');
+let app = express();
 
 //body-parserの設定
 app.use(express.urlencoded({ extended: true }));

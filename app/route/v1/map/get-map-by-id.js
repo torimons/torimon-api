@@ -1,14 +1,10 @@
-let express = require('express');
-let router = express.Router();
-let MapModel = require('../../../models/mapModel.js')
+let MapModel = require('../../../models/MapModel');
 
-// GET http://localhost:3000/api/v1/map/:id
-// マップ(id指定)の情報を取得
-router.get('/:id', (req, res) => {
-    let mapId = req.params.id;
-    res = getMapById(mapId, res);
-})
-
+/**
+ * mapIdのマップをmongoDBから取得
+ * @param {string} mapId - mongoDBの自動で振られたID 
+ * @param {object} res - レスポンスのobject 
+ */
 let getMapById = (mapId, res) => {
     MapModel
         .findById(mapId, (err, map) => {
@@ -24,4 +20,4 @@ let getMapById = (mapId, res) => {
     return res;
 }
 
-module.exports = router;
+module.exports = getMapById

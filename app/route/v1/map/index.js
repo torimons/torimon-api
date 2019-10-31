@@ -3,8 +3,8 @@ let express = require('express');
 let router = express.Router();
 
 // map用のルーティング
-router.use('/', require('./map_root.js'));
-router.use('/', require('./map_id.js'));
+router.use('/', require('./map-api-root.js'));
+router.use('/', require('./map-api-id.js'));
 
 //routerをモジュールとして扱う準備
 module.exports = router;

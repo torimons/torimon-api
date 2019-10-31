@@ -2,16 +2,14 @@ let MapModel = require('../../../models/MapModel');
 
 /**
  * mongoDBにアクセスしてマップ一覧を取得する
- * @param {object} res - レスポンスのobject
- * @return {object} res - 結果を格納したレスポンス
+ * @return {object} maps - マップ一覧を格納したオブジェクト
  */
-let getAllMaps = (res) => {
-    MapModel
+let getAllMaps = () => {
+    return MapModel
         .find()
         .then((maps) => {
-            res.json(maps);
-        })
-    return res;
-}
+            return maps
+        });
+};
 
-module.exports = getAllMaps
+module.exports = getAllMaps;

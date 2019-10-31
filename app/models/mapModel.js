@@ -49,7 +49,7 @@ let MapSchema = new Schema({
     spots: [SpotSchema],
     nodes: [NodeSchema],
     edges: [EdgeSchema],
-    parent_spot_id: SpotSchema
+    parent_spot_id: Number
 });
 
 // スキーマをモデルとしてコンパイルし、それをモジュールとして扱えるようにする

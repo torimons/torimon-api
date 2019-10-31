@@ -111,5 +111,7 @@ let singleMap =
     "__v": 0
 };
 
-module.exports = allMaps;
-module.exports = singleMap;
+module.exports = {
+    allMaps,
+    singleMap
+};

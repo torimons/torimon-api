@@ -8,9 +8,10 @@ let getMapById = require('./get-map-by-id.js');
  * @return {object} router - 引数と同じ，ルーティングを設定して返す
  */
 let setRoutingForMapIdApi = (router) => {
-    return router.get('/:id', (req, res) => {
+    return router.get('/:id', async (req, res) => {
         let mapId = req.params.id;
-        res = getMapById(mapId, res);
+        mapJson = await getMapById(mapId, res);
+        res.json(mapJson);
     })
 }
 

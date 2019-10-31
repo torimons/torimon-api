@@ -8,10 +8,9 @@ let getAllMaps = require('./get-all-maps.js')
  * @return {object} router - 引数を同じ，ルーティングを設定して返す
  */
 let setRoutingForMapRootApi = (router) => {
-    return router.get('/', (req, res) => {
-        console.log('in get/')
-        res.status(200);
-        res = getAllMaps(res);
+    return router.get('/', async (req, res) => {
+        let maps = await getAllMaps();
+        res.status(200).json(maps);
     });
 }
 

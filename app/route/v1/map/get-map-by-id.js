@@ -1,4 +1,4 @@
-let MapModel = require('../../../models/MapModel');
+let MapModel = require('../../../models/mapModel.js');
 let mongoose = require('mongoose')
 
 /**

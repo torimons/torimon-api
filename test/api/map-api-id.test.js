@@ -17,29 +17,29 @@ describe('/api/v1/map/:idのテスト', () => {
     // mock
     jest.mock('../../app/route/v1/map/get-map-by-id.js')
     let getMapById = require('../../app/route/v1/map/get-map-by-id.js')
-    getMapById.mockImplementation((mapId, res) => {
+    getMapById.mockImplementation((mapId) => {
         if (mapId == 'exist_id') {
             return example.singleMap;
         }
         else {
-            res.status(204);
-            return {}
+            return null;
         }
     })
 
     test('mapIdが存在しない場合，エラーコード204が帰ってくるはず', (done) => {
         request(app).get('/map/id_that_doesnt_exist').then((response) => {
             expect(response.status).toBe(204);
+            // getMapByIdの返り値はnullだが，toJson(null) => {}になる
+            expect(response.body).toMatchObject({});
             done();
         });
     });
 
     test('mapIdが存在する場合，そのマップの情報が帰ってくるはず', (done) => {
         request(app).get('/map/exist_id').then((response) => {
+            expect(response.status).toBe(200);
             expect(response.body).toMatchObject(example.singleMap);
             done();
         });
     });
-
-
 });

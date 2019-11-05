@@ -1,10 +1,10 @@
-let MapModel = require('../../../models/mapModel.js');
+const MapModel = require('../../../models/mapModel.js');
 
 /**
  * mongoDBにアクセスしてマップ一覧を取得する
- * @return {object} maps - マップ一覧を格納したオブジェクト
+ * @return {object} マップ一覧を格納したオブジェクト
  */
-let getAllMaps = () => {
+const getAllMaps = () => {
     return MapModel
         .find()
         .then((maps) => {

@@ -1,12 +1,12 @@
-let request = require('supertest')
-let expect = require('expect')
-let assert = require('assert')
-let express = require('express');
+const request = require('supertest');
+const expect = require('expect');
+const assert = require('assert');
+const express = require('express');
 
 describe('/api/v1/map/のテスト', () => {
     // /mapだけのルーティングを用意する
-    let router = require('../../app/route/v1/map/map-api-root.js')
-    let app = express();
+    const router = require('../../app/route/v1/map/map-api-root.js')
+    const app = express();
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     app.use('/map', router);
@@ -16,7 +16,7 @@ describe('/api/v1/map/のテスト', () => {
 
     // mock
     jest.mock('../../app/route/v1/map/get-all-maps.js')
-    let getAllMaps = require('../../app/route/v1/map/get-all-maps.js')
+    const getAllMaps = require('../../app/route/v1/map/get-all-maps.js')
     getAllMaps.mockImplementation(() => {
         return example.allMaps;
     })

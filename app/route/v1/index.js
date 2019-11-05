@@ -1,6 +1,6 @@
-let express = require('express');
+const express = require('express');
 // ルーティングするで
-let router = express.Router();
+const router = express.Router();
 
 // map用のルーティング
 router.use('/map', require('./map/index.js'));

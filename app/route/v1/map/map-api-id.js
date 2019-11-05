@@ -1,19 +1,18 @@
-let express = require('express');
-let router = express.Router();
-let getMapById = require('./get-map-by-id.js');
+const express = require('express');
+const router = express.Router();
+const getMapById = require('./get-map-by-id.js');
 
 /**
  * /api/v1/map/:idのルーティングを設定
- * @param {object} router - express.Routerのobject
- * @return {object} router - 引数と同じ，ルーティングを設定して返す
+ * @param {object} router express.Routerのobject
+ * @return {object} 引数と同じ，ルーティングを設定して返す
  */
-let setRoutingForMapIdApi = (router) => {
+const setRoutingForMapIdApi = (router) => {
     return router.get('/:id', async (req, res) => {
-        let mapId = req.params.id;
-
-        let mapJson = await getMapById(mapId);
+        const mapId = req.params.id;
+        const mapJson = await getMapById(mapId);
         // DB検索の結果を待ってからステータスコードを設定する
-        let _status = await (async (mapJson) => {
+        const status = await (async (mapJson) => {
             if (mapJson === null) {
                 return 204; // not found
             }
@@ -21,9 +20,8 @@ let setRoutingForMapIdApi = (router) => {
                 return 200;
             }
         })(mapJson);
-
-        res.status(_status).json(mapJson);
-    })
-}
+        res.status(status).json(mapJson);
+    });
+};
 
 module.exports = setRoutingForMapIdApi(router);

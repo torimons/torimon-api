@@ -1,13 +1,13 @@
-let MapModel = require('../../../models/mapModel.js');
-let mongoose = require('mongoose')
+const MapModel = require('../../../models/mapModel.js');
+const mongoose = require('mongoose');
 
 /**
  * mapIdのマップをmongoDBから取得
- * @param {string} mapId - mongoDBの自動で振られたID 
- * @param {object} map - mapIdのマップ情報
+ * @param {string} mapId mongoDBの自動で振られたID 
+ * @return {object} mapIdのマップ情報
  *     mapIdが有効ならそのマップの情報，mapIdが無効(not found)ならnull
  */
-let getMapById = (mapId) => {
+const getMapById = (mapId) => {
     return MapModel
         .findById(mapId)
         .then((map) => {
@@ -19,4 +19,4 @@ let getMapById = (mapId) => {
         });
 };
 
-module.exports = getMapById
+module.exports = getMapById;

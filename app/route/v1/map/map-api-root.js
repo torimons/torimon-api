@@ -1,17 +1,17 @@
-let express = require('express');
-let router = express.Router();
-let getAllMaps = require('./get-all-maps.js')
+const express = require('express');
+const router = express.Router();
+const getAllMaps = require('./get-all-maps.js');
 
 /**
  * /api/v1/map/のルーティングを設定
- * @param {object} router - express.Routerのobject 
- * @return {object} router - 引数を同じ，ルーティングを設定して返す
+ * @param {object} router express.Routerのobject 
+ * @return {object} 引数と同じ，ルーティングを設定して返す
  */
-let setRoutingForMapRootApi = (router) => {
+const setRoutingForMapRootApi = (router) => {
     return router.get('/', async (req, res) => {
-        let maps = await getAllMaps();
+        const maps = await getAllMaps();
         res.status(200).json(maps);
     });
-}
+};
 
 module.exports = setRoutingForMapRootApi(router);

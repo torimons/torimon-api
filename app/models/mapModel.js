@@ -1,7 +1,7 @@
-let mongoose = require('mongoose'); //mongoDBに接続するためのライブラリ
-let Schema = mongoose.Schema; //mongoDBのスキーマを作る
+const mongoose = require('mongoose'); //mongoDBに接続するためのライブラリ
+const Schema = mongoose.Schema; //mongoDBのスキーマを作る
 
-let SpotSchema = new Schema({
+const SpotSchema = new Schema({
     id: Number,
     name: String,
     location: {
@@ -15,7 +15,7 @@ let SpotSchema = new Schema({
     others: {}
 });
 
-let NodeSchema = new Schema({
+const NodeSchema = new Schema({
     id: Number,
     map_id: Number,
     spot_id: Number,
@@ -25,7 +25,7 @@ let NodeSchema = new Schema({
     }
 });
 
-let EdgeSchema = new Schema({
+const EdgeSchema = new Schema({
     id: Number,
     node_id: {
         a: Number,
@@ -34,7 +34,7 @@ let EdgeSchema = new Schema({
     distance: Number
 });
 
-let MapSchema = new Schema({
+const MapSchema = new Schema({
     name: String,
     bounds: {
         top_l: {
@@ -49,7 +49,7 @@ let MapSchema = new Schema({
     spots: [SpotSchema],
     nodes: [NodeSchema],
     edges: [EdgeSchema],
-    parent_spot_id: SpotSchema
+    parent_spot_id: Number
 });
 
 // スキーマをモデルとしてコンパイルし、それをモジュールとして扱えるようにする

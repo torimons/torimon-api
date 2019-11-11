@@ -12,6 +12,7 @@ const SpotSchema = new Schema({
     shape: {
         type: {
             type: String
+            // enumでStringの値を制限できる
         },
         coordinates: {}
     },
@@ -19,7 +20,7 @@ const SpotSchema = new Schema({
     parent_spot_ids: [Number],
     detail_map_id: Number,
     others: {
-        desctiption: String,
+        description: String,
         attachment: [
             {
                 name: String,

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const MapModel = require('../../../models/mapModel.js');
 
-const sougou = require('../../../../test/test-examples/sougou.js')
+const sougou = require('../../../../test/test-examples/sougou-test-map-data.js/index.js')
 
 router.post('/', (req, res) => {
     let Map = new MapModel();

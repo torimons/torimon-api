@@ -1,4 +1,4 @@
-let sougou =
+const sougou =
 {
     "id": 0,
     "name": "SougouGakusyuPlaza",

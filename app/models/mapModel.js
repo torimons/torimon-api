@@ -4,18 +4,16 @@ const Schema = mongoose.Schema; //mongoDBのスキーマを作る
 const SpotSchema = new Schema({
     id: Number,
     name: String,
-    location: {
+    coordinate: {
         lat: Number,
-        lon: Number
+        lng: Number
     },
     floor: Number,
     shape: {
         type: {
             type: String
         },
-        coordinates: {
-            any: {}
-        }
+        coordinates: {}
     },
     gate_node_ids: [Number],
     parent_spot_ids: [Number],
@@ -29,17 +27,18 @@ const SpotSchema = new Schema({
             }
         ]
     }
-});
+}, { _id: false });
 
 const NodeSchema = new Schema({
     id: Number,
     map_id: Number,
     spot_id: Number,
-    location: {
+    coordinate: {
         lat: Number,
-        lon: Number
-    }
-});
+        lng: Number
+    },
+    floor: Number
+}, { _id: false });
 
 const EdgeSchema = new Schema({
     id: Number,
@@ -48,7 +47,7 @@ const EdgeSchema = new Schema({
         b: Number
     },
     distance: Number
-});
+}, { _id: false });
 
 const MapSchema = new Schema({
     id: Number,
@@ -56,11 +55,11 @@ const MapSchema = new Schema({
     bounds: {
         top_l: {
             lat: Number,
-            lon: Number
+            lng: Number
         },
         bot_r: {
             lat: Number,
-            lon: Number
+            lng: Number
         }
     },
     spot: [SpotSchema],

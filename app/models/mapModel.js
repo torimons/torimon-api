@@ -20,7 +20,15 @@ const SpotSchema = new Schema({
     gate_node_ids: [Number],
     parent_spot_ids: [Number],
     detail_map_id: Number,
-    others: {}
+    others: {
+        desctiption: String,
+        attachment: [
+            {
+                name: String,
+                url: String
+            }
+        ]
+    }
 });
 
 const NodeSchema = new Schema({

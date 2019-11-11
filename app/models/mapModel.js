@@ -9,7 +9,7 @@ const SpotSchema = new Schema({
         lon: Number
     },
     floor: Number,
-    Shape: {
+    shape: {
         type: {
             type: String
         },
@@ -63,9 +63,9 @@ const MapSchema = new Schema({
             lon: Number
         }
     },
-    spots: [SpotSchema],
-    nodes: [NodeSchema],
-    edges: [EdgeSchema],
+    spot: [SpotSchema],
+    node: [NodeSchema],
+    edge: [EdgeSchema],
     parent_spot_id: Number
 });
 

@@ -9,6 +9,14 @@ const SpotSchema = new Schema({
         lon: Number
     },
     floor: Number,
+    Shape: {
+        type: {
+            type: String
+        },
+        coordinates: {
+            any: {}
+        }
+    },
     gate_node_ids: [Number],
     parent_spot_ids: [Number],
     detail_map_id: Number,
@@ -35,6 +43,7 @@ const EdgeSchema = new Schema({
 });
 
 const MapSchema = new Schema({
+    id: Number,
     name: String,
     bounds: {
         top_l: {

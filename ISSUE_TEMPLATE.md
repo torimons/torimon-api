@@ -7,11 +7,10 @@ assignees: ''
 
 ---
 
-## 概要
+### Description
 
 
-## このIssueに取り掛かるために完了している必要があるIssue番号
+### After this issue
 
 
-## notion　URL
-
+### Notion URL

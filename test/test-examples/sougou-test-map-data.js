@@ -4,7 +4,7 @@ const sougou =
         {
             "id": 0,
             "name": "SougouGakusyuPlaza_1F",
-            "spot": [
+            "spots": [
                 {
                     "id": 0,
                     "name": "101",
@@ -23,7 +23,7 @@ const sougou =
                     "gate_node_ids": [0],
                 }
             ],
-            "node": [
+            "nodes": [
                 {
                     "id": 0,
                     "map_id": 0,
@@ -34,7 +34,7 @@ const sougou =
                     },
                 },
             ],
-            "edge": [
+            "edges": [
                 {
                     "id": 0,
                     "node_id": {
@@ -58,7 +58,7 @@ const sougou =
         {
             "id": 1,
             "name": "SougouGakusyuPlaza_2F",
-            "spot": [
+            "spots": [
                 {
                     "id": 10,
                     "name": "201",
@@ -79,7 +79,7 @@ const sougou =
                     "others": {}
                 }
             ],
-            "node": [
+            "nodes": [
                 {
                     "id": 10,
                     "map_id": 0,
@@ -90,7 +90,7 @@ const sougou =
                     },
                 }
             ],
-            "edge": []
+            "edges": []
         },
     ]
 }

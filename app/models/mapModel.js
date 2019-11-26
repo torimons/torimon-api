@@ -18,7 +18,8 @@ const SpotSchema = new Schema({
     },
     gate_node_ids: [Number],
     parent_spot_ids: [Number],
-    detail_map_id: Number,
+    detail_map_ids: [Number],
+    detail_map_level_names: [String],
     others: {
         description: String,
         attachment: [
@@ -67,7 +68,11 @@ const MapSchema = new Schema({
     node: [NodeSchema],
     edge: [EdgeSchema],
     parent_spot_id: Number
-});
+}, { _id: false});
+
+const MapArraySchema = new Schema({
+    maps: [MapSchema]
+})
 
 // スキーマをモデルとしてコンパイルし、それをモジュールとして扱えるようにする
-module.exports = mongoose.model('MapModel', MapSchema);
+module.exports = mongoose.model('MapModel', MapArraySchema);

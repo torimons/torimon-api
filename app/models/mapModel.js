@@ -8,18 +8,13 @@ const SpotSchema = new Schema({
         lat: Number,
         lng: Number
     },
-    floor: Number,
+    floorName: String,
     shape: {
         type: {
             type: String
-            // enumでStringの値を制限できる
         },
-        coordinates: {}
+        coordinates: [[[Number]]] | [[[[Number]]]] 
     },
-    gate_node_ids: [Number],
-    parent_spot_ids: [Number],
-    detail_map_ids: [Number],
-    detail_map_level_names: [String],
     others: {
         description: String,
         attachment: [
@@ -28,51 +23,31 @@ const SpotSchema = new Schema({
                 url: String
             }
         ]
-    }
-}, { _id: false });
-
-const NodeSchema = new Schema({
-    id: Number,
-    map_id: Number,
-    spot_id: Number,
-    coordinate: {
-        lat: Number,
-        lng: Number
     },
-    floor: Number
-}, { _id: false });
-
-const EdgeSchema = new Schema({
-    id: Number,
-    node_id: {
-        a: Number,
-        b: Number
-    },
-    distance: Number
+    type: String,
+    _shouldDisplayNameOnMap: Boolean,
 }, { _id: false });
 
 const MapSchema = new Schema({
     id: Number,
     name: String,
     bounds: {
-        top_l: {
+        topL: {
             lat: Number,
             lng: Number
         },
-        bot_r: {
+        botR: {
             lat: Number,
             lng: Number
         }
     },
-    spot: [SpotSchema],
-    node: [NodeSchema],
-    edge: [EdgeSchema],
-    parent_spot_id: Number
-}, { _id: false});
+    floorName: String,
+    description: String,
+    spots: [SpotSchema],
+});
 
-const MapArraySchema = new Schema({
-    maps: [MapSchema]
-})
+// スキーマの循環参照への対応
+SpotSchema.add({detailMaps: [MapSchema]});
 
 // スキーマをモデルとしてコンパイルし、それをモジュールとして扱えるようにする
-module.exports = mongoose.model('MapModel', MapArraySchema);
+module.exports = mongoose.model('MapModel', MapSchema);

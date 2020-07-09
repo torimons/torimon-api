@@ -3,7 +3,7 @@ const router = express.Router();
 const getAllMaps = require('./get-all-maps.js');
 
 /**
- * /api/v1/map/のルーティングを設定
+ * /api/v1/maps/のルーティングを設定
  * @param {object} router express.Routerのobject 
  * @return {object} 引数と同じ，ルーティングを設定して返す
  */

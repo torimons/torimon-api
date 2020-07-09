@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // map用のルーティング
-router.use('/map', require('./map/index.js'));
+router.use('/maps', require('./map/index.js'));
 
 //routerをモジュールとして扱う準備
 module.exports = router;

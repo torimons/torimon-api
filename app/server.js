@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const app = require('./app.js')
 
+
 // mongoDB接続
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/ExpressAPI',
